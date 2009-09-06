@@ -1,0 +1,3 @@
+Edit your TeX files in your favorite editor; whenever you save, the preview in TeXorator will update.
+
+You'll need a pre-existing LaTeX installation for this to be any use to you.  Tell TeXorator the path to pdflatex in the preferences.
