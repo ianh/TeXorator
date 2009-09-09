@@ -2,8 +2,6 @@
 // Prefix header for all source files of the 'TeXorator' target in the 'TeXorator' project
 //
 
-#define DEFAULT_PATH @"/sw/bin/pdflatex"
-
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 #endif

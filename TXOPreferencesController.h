@@ -9,9 +9,9 @@
 
 
 @interface TXOPreferencesController : NSWindowController {
-	IBOutlet NSTextField *executablePath;
+    IBOutlet NSTextField *executablePath;
 }
 
-- (IBAction)ok:sender;
+- (IBAction)ok:(id)sender;
 
 @end

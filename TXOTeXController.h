@@ -8,15 +8,15 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface TXOTeXController : NSWindowController {
-	IBOutlet NSTextView *texOutput;
-	
-	id delegate;
-	NSPipe *outputPipe;
-	NSTask *pdfLatexTask;
-	
-	// Icky threading stuff
-	NSMutableArray *notificationQueue;
+@interface TXOTeXController : NSWindowController <NSMachPortDelegate> {
+    IBOutlet NSTextView *texOutput;
+    
+    id delegate;
+    NSPipe *outputPipe;
+    NSTask *pdfLatexTask;
+    
+    // Icky threading stuff
+    NSMutableArray *notificationQueue;
     NSThread *notificationThread;
     NSLock *notificationLock;
     NSMachPort *notificationPort;

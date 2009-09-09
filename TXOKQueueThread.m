@@ -11,6 +11,12 @@
 #include <sys/time.h>
 #include <sys/types.h>
 
+@interface NSObject(TXOKQueueDelegate)
+
+- (void)fileChanged;
+
+@end
+
 @implementation TXOKQueueThread
 
 - (void)threadMain:(id)_arg

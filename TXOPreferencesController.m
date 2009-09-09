@@ -7,28 +7,29 @@
 
 #import "TXOPreferencesController.h"
 
+NSString * const TXODefaultExecutablePath = @"/usr/texbin/pdflatex";
 
 @implementation TXOPreferencesController
 
-- init
+- (id)init
 {
-	return [super initWithWindowNibName:@"TXOPreferences"];
+    return [super initWithWindowNibName:@"TXOPreferences"];
 }
 
-- (IBAction)ok:sender
+- (IBAction)ok:(id)sender
 {
-	[[NSUserDefaults standardUserDefaults] setObject:[executablePath stringValue] forKey:@"TXOTexExecutable"];
-	[self close];
+    [[NSUserDefaults standardUserDefaults] setObject:[executablePath stringValue] forKey:@"TXOTexExecutable"];
+    [self close];
 }
 
 - (void)windowDidLoad
 {
-	NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:@"TXOTexExecutable"];
-	if (path == nil) {
-		[[NSUserDefaults standardUserDefaults] setObject:DEFAULT_PATH forKey:@"TXOTexExecutable"];
-		path = DEFAULT_PATH;
-	}
-	[executablePath setStringValue:path];
+    [executablePath setStringValue:[[NSUserDefaults standardUserDefaults] objectForKey:@"TXOTexExecutable"]];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)note
+{
+    [[NSUserDefaults standardUserDefaults] registerDefaults:[NSDictionary dictionaryWithObject:TXODefaultExecutablePath forKey:@"TXOTexExecutable"]];
 }
 
 @end

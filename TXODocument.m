@@ -20,12 +20,12 @@
     
     [kQueue release];
     [pdfDocument release];
-	[super dealloc];
+    [super dealloc];
 }
 
 - (void)fileChanged
 {
-	[texController processTexFile:[self fileName] delegate:self];
+    [texController processTexFile:[self fileName] delegate:self];
 }
 
 - (void)texControllerFinishedWithNoError
@@ -49,7 +49,7 @@
 
 - (void)texControllerFinishedWithError
 {
-	[texController showWindow:self];
+    [texController showWindow:self];
 }
 
 - (NSString *)windowNibName
@@ -61,7 +61,7 @@
 {
     [super windowControllerDidLoadNib:aController];
     [pdfView setAutoScales:YES];
-	[texController setupThreading];
+    [texController setupThreading];
     if (!subThread) {
         kQueue = [[TXOKQueueThread alloc] initWithDelegate:self path:[[[self fileURL] path] UTF8String]];
         subThread = [[NSThread alloc] initWithTarget:kQueue selector:@selector(threadMain:) object:nil];
@@ -85,8 +85,8 @@
 {
     NSPrintOperation *op = [NSPrintOperation printOperationWithView:pdfView printInfo:[self printInfo]];
     [op setShowPanels:showPanels];
-	
-	[self runModalPrintOperation:op delegate:nil didRunSelector:NULL contextInfo:NULL];
+    
+    [self runModalPrintOperation:op delegate:nil didRunSelector:NULL contextInfo:NULL];
 }
 
 @end

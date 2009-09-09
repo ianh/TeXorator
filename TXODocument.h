@@ -13,8 +13,8 @@
 
 @interface TXODocument : NSDocument
 {
-	IBOutlet PDFView *pdfView;
-	IBOutlet TXOTeXController *texController;
+    IBOutlet PDFView *pdfView;
+    IBOutlet TXOTeXController *texController;
     
     PDFDocument *pdfDocument;
     
