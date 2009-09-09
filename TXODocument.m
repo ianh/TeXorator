@@ -30,6 +30,8 @@
 
 - (void)texControllerFinishedWithNoError
 {
+    [[texController window] close];
+    
     BOOL preserveLayout = (pdfDocument != nil);
     
     PDFDestination *dest = [pdfView currentDestination];
