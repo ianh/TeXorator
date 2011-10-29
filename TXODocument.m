@@ -17,7 +17,7 @@
     [subThread cancel];
     while (![subThread isFinished]) { }
     [subThread release];
-    
+
     [kQueue release];
     [pdfDocument release];
     [super dealloc];
@@ -31,17 +31,17 @@
 - (void)texControllerFinishedWithNoError
 {
     [[texController window] close];
-    
+
     BOOL preserveLayout = (pdfDocument != nil);
-    
+
     PDFDestination *dest = [pdfView currentDestination];
     NSPoint pt = [dest point];
     NSUInteger pageIdx = [pdfDocument indexForPage:[dest page]];
-    
+
     [pdfDocument release];
     pdfDocument = [[PDFDocument alloc] initWithURL:[NSURL fileURLWithPath:[[[self fileName] stringByDeletingPathExtension] stringByAppendingPathExtension:@"pdf"]]];
     [pdfView setDocument:pdfDocument];
-    
+
     if (preserveLayout) {
         dest = [[PDFDestination alloc] initWithPage:[pdfDocument pageAtIndex:pageIdx] atPoint:pt];
         [pdfView goToDestination:dest];
@@ -83,11 +83,11 @@
     return YES;
 }
 
-- (void)printShowingPrintPanel:(BOOL)showPanels 
+- (void)printShowingPrintPanel:(BOOL)showPanels
 {
     NSPrintOperation *op = [NSPrintOperation printOperationWithView:pdfView printInfo:[self printInfo]];
     [op setShowPanels:showPanels];
-    
+
     [self runModalPrintOperation:op delegate:nil didRunSelector:NULL contextInfo:NULL];
 }
 

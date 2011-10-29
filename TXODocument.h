@@ -15,9 +15,9 @@
 {
     IBOutlet PDFView *pdfView;
     IBOutlet TXOTeXController *texController;
-    
+
     PDFDocument *pdfDocument;
-    
+
     TXOKQueueThread *kQueue;
     NSThread *subThread;
 }
