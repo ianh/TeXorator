@@ -10,11 +10,11 @@
 
 @interface TXOTeXController : NSWindowController <NSMachPortDelegate> {
     IBOutlet NSTextView *texOutput;
-    
+
     id delegate;
     NSPipe *outputPipe;
     NSTask *pdfLatexTask;
-    
+
     // Icky threading stuff
     NSMutableArray *notificationQueue;
     NSThread *notificationThread;
